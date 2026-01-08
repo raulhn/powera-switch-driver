@@ -292,9 +292,9 @@ MODULE_DEVICE_TABLE(hid, powera_devices);
 
 static struct hid_driver powera_driver = {
     .name           = "hid-powera",
-    . id_table       = powera_devices,
+    .id_table       = powera_devices,
     .probe          = powera_probe,
-    . remove         = powera_remove,
+    .remove         = powera_remove,
     .raw_event      = powera_hid_event,
 };
 module_hid_driver(powera_driver);
