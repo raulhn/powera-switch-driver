@@ -132,10 +132,13 @@ static int powera_hid_event(struct hid_device *hdev,
     u8 ry = rstick_y >> 8;
 
     /* Report stick positions (Y axis inverted for Linux convention) */
+    /* Se invierte el eje Y, el input lo estaba haciendo invertido - 11/01/2026 */
     input_report_abs(input, ABS_X, lx);
-    input_report_abs(input, ABS_Y, 255 - ly);
+    //input_report_abs(input, ABS_Y, 255 - ly);
+    input_report_abs(input, ABS_Y,  ly);
     input_report_abs(input, ABS_RX, rx);
-    input_report_abs(input, ABS_RY, 255 - ry);
+    //input_report_abs(input, ABS_RY, 255 - ry);
+    input_report_abs(input, ABS_RY,  ry);
 
     input_sync(input);
     spin_unlock_irqrestore(&ctlr->lock, flags);
